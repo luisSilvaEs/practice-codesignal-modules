@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS folder attributes
+*.icloud
+
+# Node modules (if any)
+node_modules/
+
+# Environment
+.env
+
+# Build output
+dist/
+build/
+
+# IDEs and editors
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Others
+*.DS_Store
+Thumbs.db
