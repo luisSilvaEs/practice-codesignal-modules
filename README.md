@@ -12,6 +12,9 @@ Start the **backend** first. From `backend/practicecodesignal/`:
 ./mvnw spring-boot:run
 ```
 
+- NOTE
+  Since env is loaded through Docker compose, API won't work
+
 Then, in a separate terminal, start the **frontend**. From `frontend/`:
 
 ```bash
