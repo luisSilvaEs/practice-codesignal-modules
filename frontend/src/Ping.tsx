@@ -1,3 +1,7 @@
+import { Button } from "@/components/ui/button";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+
 import { useState } from "react";
 
 const Ping = () => {
@@ -20,14 +24,19 @@ const Ping = () => {
   return (
     <div>
       <h2>Ping test</h2>
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        placeholder="Type something..."
-      />
+      <Field>
+        <FieldLabel>Message</FieldLabel>
+        <Input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Type something..."
+        />
+      </Field>
 
-      <button onClick={handleSubmit}>Send</button>
+      <Button onClick={handleSubmit} type="submit">
+        Send
+      </Button>
       {response && <p>Response: {response}</p>}
     </div>
   );
