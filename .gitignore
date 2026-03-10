@@ -43,3 +43,4 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+backend/practicecodesignal/src/main/resources/application.properties
