@@ -22,7 +22,8 @@ build/
 #Java
 target/
 *.class
-*.jar 
+*.jar
+application.properties
 
 # IDEs and editors
 .vscode/
