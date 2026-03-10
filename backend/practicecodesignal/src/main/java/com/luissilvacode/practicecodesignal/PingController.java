@@ -6,8 +6,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class PingController {
 
+    private final ClaudeService claudeService;
+
+    public PingController(ClaudeService claudeService) {
+        this.claudeService = claudeService;
+    }
+
     @PostMapping("/ping")
     public String ping(@RequestBody String message) {
-        return "Backend received: " + message;
+        String joke = claudeService.getJoke();
+        return "Backend received: " + message + " | Claude says: " + joke;
     }
 }
