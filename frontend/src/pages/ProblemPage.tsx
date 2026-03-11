@@ -4,6 +4,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import CodeEditor from "@/components/editor/CodeEditor";
 
 const ProblemPage = () => {
   return (
@@ -18,7 +19,7 @@ const ProblemPage = () => {
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={60} minSize={25}>
-          Code editor
+          <CodeEditor />
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
