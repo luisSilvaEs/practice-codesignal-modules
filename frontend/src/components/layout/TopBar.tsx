@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Play, Upload, Clock, User } from "lucide-react";
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarGroup,
+  MenubarItem,
+} from "@/components/ui/menubar";
+import { ChevronDown, Play, Upload, Clock, Moon, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const LANGUAGES = ["TypeScript", "JavaScript", "Python", "Java", "C++"];
@@ -146,6 +154,20 @@ export default function TopBar({
           <Upload className="size-3.5" />
           Submit
         </Button>
+        <Menubar className="flex border-0">
+          <MenubarMenu>
+            <MenubarTrigger className="text-white hover:bg-black aria-expanded:bg-black aria-expanded:text-white">
+              <Moon className="size-3.5" />
+            </MenubarTrigger>
+            <MenubarContent>
+              <MenubarGroup>
+                <MenubarItem>System</MenubarItem>
+                <MenubarItem>Light</MenubarItem>
+                <MenubarItem>Dark</MenubarItem>
+              </MenubarGroup>
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
         <div className="ml-1 flex size-7 items-center justify-center rounded-full bg-[#7c84f0] text-white text-xs font-semibold cursor-pointer hover:bg-[#6b73e0] transition-colors">
           <User className="size-3.5" />
         </div>
