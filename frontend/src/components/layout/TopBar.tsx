@@ -11,6 +11,8 @@ import {
 import { ChevronDown, Play, Upload, Clock, Moon, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import { useTheme } from "@/context/ThemeContext";
+
 const LANGUAGES = ["TypeScript", "JavaScript", "Python", "Java", "C++"];
 
 interface TopBarProps {
@@ -36,7 +38,7 @@ function Timer() {
     h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
 
   return (
-    <span className="flex items-center gap-1.5 text-sm text-[#8b8fa8] font-mono tabular-nums">
+    <span className="flex items-center gap-1.5 text-sm text-muted-foreground font-mono tabular-nums">
       <Clock className="size-3.5" />
       {display}
     </span>
@@ -56,18 +58,18 @@ function LanguageSelector({
     <div className="relative">
       <button
         onClick={() => setOpen((o) => !o)}
-        className="flex items-center gap-1.5 rounded-md bg-[#1e2030] hover:bg-[#252840] border border-[#2e3250] px-3 py-1.5 text-sm text-[#c8cce8] transition-colors"
+        className="flex items-center gap-1.5 rounded-md bg-background hover:bg-background border border-[#2e3250] px-3 py-1.5 text-sm text-foreground transition-colors"
       >
         {language}
         <ChevronDown
           className={cn(
-            "size-3.5 text-[#8b8fa8] transition-transform",
+            "size-3.5 text-muted-foreground transition-transform",
             open && "rotate-180",
           )}
         />
       </button>
       {open && (
-        <div className="absolute top-full mt-1 left-0 z-50 min-w-35 rounded-md border border-[#2e3250] bg-[#1a1c2e] py-1 shadow-xl">
+        <div className="absolute top-full mt-1 left-0 z-50 min-w-35 rounded-md border border-[#2e3250] bg-background py-1 shadow-xl">
           {LANGUAGES.map((lang) => (
             <button
               key={lang}
@@ -95,9 +97,10 @@ export default function TopBar({
   totalTasks = 5,
 }: TopBarProps) {
   const [language, setLanguage] = useState("TypeScript");
+  const { setTheme } = useTheme();
 
   return (
-    <header className="flex h-12 items-center justify-between border-b border-[#1e2030] bg-[#12131f] px-4 shrink-0">
+    <header className="flex h-12 items-center justify-between border-b border-border bg-background px-4 shrink-0">
       {/* Left: logo + breadcrumb */}
       <div className="flex items-center gap-3 karina">
         {/* CodeSignal-style logo mark */}
@@ -113,7 +116,7 @@ export default function TopBar({
               />
             </svg>
           </div>
-          <span className="text-sm font-semibold text-white tracking-tight">
+          <span className="text-sm font-semibold text-foreground tracking-tight">
             CodeSignal
           </span>
         </div>
@@ -126,7 +129,7 @@ export default function TopBar({
           <span className="text-[#c8cce8] font-medium">{problemTitle}</span>
         </div>
 
-        <span className="rounded bg-[#1e2030] border border-[#2e3250] px-2 py-0.5 text-xs text-[#8b8fa8]">
+        <span className="rounded bg-muted border border-[#2e3250] px-2 py-0.5 text-xs text-[#8b8fa8]">
           {taskNumber}/{totalTasks}
         </span>
       </div>
@@ -142,33 +145,37 @@ export default function TopBar({
         <Button
           variant="outline"
           size="sm"
-          className="border-[#2e3250] bg-[#1e2030] text-[#c8cce8] hover:bg-[#252840] hover:text-white gap-1.5"
+          className="border-[#2e3250] bg-muted text-[#c8cce8] hover:bg-[#252840] hover:text-foreground gap-1.5"
         >
           <Play className="size-3.5" />
           Run
         </Button>
         <Button
           size="sm"
-          className="bg-[#4caf7d] hover:bg-[#43a371] text-white border-0 gap-1.5"
+          className="bg-[#4caf7d] hover:bg-[#43a371] text-foreground border-0 gap-1.5"
         >
           <Upload className="size-3.5" />
           Submit
         </Button>
         <Menubar className="flex border-0">
           <MenubarMenu>
-            <MenubarTrigger className="text-white hover:bg-black aria-expanded:bg-black aria-expanded:text-white">
+            <MenubarTrigger className="text-foreground hover:bg-muted aria-expanded:bg-muted aria-expanded:text-foreground">
               <Moon className="size-3.5" />
             </MenubarTrigger>
             <MenubarContent>
               <MenubarGroup>
-                <MenubarItem>System</MenubarItem>
-                <MenubarItem>Light</MenubarItem>
-                <MenubarItem>Dark</MenubarItem>
+                <MenubarItem onClick={() => setTheme("system")}>
+                  System
+                </MenubarItem>
+                <MenubarItem onClick={() => setTheme("light")}>
+                  Light
+                </MenubarItem>
+                <MenubarItem onClick={() => setTheme("dark")}>Dark</MenubarItem>
               </MenubarGroup>
             </MenubarContent>
           </MenubarMenu>
         </Menubar>
-        <div className="ml-1 flex size-7 items-center justify-center rounded-full bg-[#7c84f0] text-white text-xs font-semibold cursor-pointer hover:bg-[#6b73e0] transition-colors">
+        <div className="ml-1 flex size-7 items-center justify-center rounded-full bg-[#7c84f0] text-foreground text-xs font-semibold cursor-pointer hover:bg-[#6b73e0] transition-colors">
           <User className="size-3.5" />
         </div>
       </div>

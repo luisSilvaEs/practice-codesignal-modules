@@ -1,11 +1,14 @@
 import "./App.css";
 import Ping from "./Ping";
 import ProblemPage from "./pages/ProblemPage";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
     <>
-      <ProblemPage />
+      <ThemeProvider>
+        <ProblemPage />
+      </ThemeProvider>
     </>
   );
 }

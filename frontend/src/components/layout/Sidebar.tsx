@@ -37,7 +37,7 @@ export default function Sidebar({ defaultActive = "practice" }: SidebarProps) {
   const [active, setActive] = useState(defaultActive);
 
   return (
-    <nav className="flex h-screen w-14 flex-col items-center border-r border-[#1e2030] bg-[#12131f] py-3">
+    <nav className="flex h-screen w-14 flex-col items-center border-r border-border bg-background py-3">
       {/* Top nav items */}
       <div className="flex flex-1 flex-col items-center gap-1">
         {TOP_ITEMS.map(({ icon: Icon, label, id }) => (
@@ -86,7 +86,7 @@ function NavButton({
         "group relative flex size-10 items-center justify-center rounded-lg transition-colors",
         active
           ? "bg-[#7c84f0]/15 text-[#7c84f0]"
-          : "text-[#8b8fa8] hover:bg-[#1e2030] hover:text-[#c8cce8]",
+          : "text-muted-foreground hover:bg-muted hover:text-foreground",
       )}
     >
       {active && (
@@ -95,7 +95,7 @@ function NavButton({
       <Icon className="size-5" />
 
       {/* Tooltip */}
-      <span className="pointer-events-none absolute left-full ml-2 whitespace-nowrap rounded-md border border-[#2e3250] bg-[#1a1c2e] px-2 py-1 text-xs text-[#c8cce8] opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+      <span className="pointer-events-none absolute left-full ml-2 whitespace-nowrap rounded-md border border-[#2e3250] bg-[#1a1c2e] px-2 py-1 text-xs text-foreground opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
         {label}
       </span>
     </button>
