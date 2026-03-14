@@ -95,7 +95,7 @@ function NavButton({
       <Icon className="size-5" />
 
       {/* Tooltip */}
-      <span className="pointer-events-none absolute left-full ml-2 whitespace-nowrap rounded-md border border-[#2e3250] bg-[#1a1c2e] px-2 py-1 text-xs text-foreground opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
+      <span className="pointer-events-none absolute left-full ml-2 whitespace-nowrap rounded-md border border-border bg-muted px-2 py-1 text-xs text-foreground opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
         {label}
       </span>
     </button>
