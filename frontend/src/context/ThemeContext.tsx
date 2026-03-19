@@ -29,4 +29,5 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+//So this could have been a custom hook
 export const useTheme = () => useContext(ThemeContext);

@@ -1,14 +1,8 @@
 import { useState } from "react";
-import {
-  LayoutDashboard,
-  Code2,
-  Trophy,
-  BookOpen,
-  BarChart2,
-  Settings,
-  HelpCircle,
-} from "lucide-react";
+import { ArrowRightLeft, Code2, Settings, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+import { useNavigation } from "@/context/NavigationContext";
 
 interface NavItem {
   icon: React.ElementType;
@@ -17,11 +11,8 @@ interface NavItem {
 }
 
 const TOP_ITEMS: NavItem[] = [
-  { icon: LayoutDashboard, label: "Dashboard", id: "dashboard" },
   { icon: Code2, label: "Practice", id: "practice" },
-  { icon: BookOpen, label: "Learn", id: "learn" },
-  { icon: Trophy, label: "Leaderboard", id: "leaderboard" },
-  { icon: BarChart2, label: "Stats", id: "stats" },
+  { icon: ArrowRightLeft, label: "Switch", id: "switch" },
 ];
 
 const BOTTOM_ITEMS: NavItem[] = [
@@ -36,6 +27,8 @@ interface SidebarProps {
 export default function Sidebar({ defaultActive = "practice" }: SidebarProps) {
   const [active, setActive] = useState(defaultActive);
 
+  const { setCurrentPage } = useNavigation();
+
   return (
     <nav className="flex h-screen w-14 flex-col items-center border-r border-border bg-background py-3">
       {/* Top nav items */}
@@ -46,7 +39,11 @@ export default function Sidebar({ defaultActive = "practice" }: SidebarProps) {
             icon={Icon}
             label={label}
             active={active === id}
-            onClick={() => setActive(id)}
+            onClick={() => {
+              setActive(id);
+              console.log(`Clicked on ${label} id: ${id}`);
+              setCurrentPage(id);
+            }}
           />
         ))}
       </div>

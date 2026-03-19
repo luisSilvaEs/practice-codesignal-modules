@@ -2,13 +2,16 @@ import "./App.css";
 import Ping from "./Ping";
 import ProblemPage from "./pages/ProblemPage";
 import { ThemeProvider } from "./context/ThemeContext";
+import { NavigationProvider } from "./context/NavigationContext";
 
 function App() {
   return (
     <>
-      <ThemeProvider>
-        <ProblemPage />
-      </ThemeProvider>
+      <NavigationProvider>
+        <ThemeProvider>
+          <ProblemPage />
+        </ThemeProvider>
+      </NavigationProvider>
     </>
   );
 }
